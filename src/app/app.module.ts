@@ -6,6 +6,8 @@ import { AllMovieListsComponent } from './movie/all-movie-lists/all-movie-lists.
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { PercentagePipe } from './pipe/percentage.pipe';
+import { UpcomingMovieListComponent } from './movie/upcoming-movie-list/upcoming-movie-list.component';
+import { DescriptionComponent } from './movie/description/description.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { PercentagePipe } from './pipe/percentage.pipe';
     AllMovieListsComponent,
     CapitalizePipe,
     PercentagePipe,
+    UpcomingMovieListComponent,
+    DescriptionComponent,
 
 
   ],

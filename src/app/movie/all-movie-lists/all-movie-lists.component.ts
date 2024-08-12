@@ -9,13 +9,11 @@ import {CapitalizePipe} from "../../pipe/capitalize.pipe";
 })
 export class AllMovieListsComponent implements OnInit{
   movieList: any=[];
-  latestMovie: any=[];
   constructor(private movieListService: MovieListService) {
 
   }
   ngOnInit() {
     this.getAllMovieLists();
-    this.getLatestMovieLists();
   }
 
   getAllMovieLists(){
@@ -29,16 +27,6 @@ export class AllMovieListsComponent implements OnInit{
       }
     })
   }
-  getLatestMovieLists(){
-    return this.movieListService.getLatestMovies().subscribe({
-      next:(res:any)=>{
-        this.latestMovie = res.results;
-        console.log(res.results);
-      },
-      error:(err:any)=>{
-        console.log('Something Error ',err);
-      }
-    })
-  }
+
 
 }

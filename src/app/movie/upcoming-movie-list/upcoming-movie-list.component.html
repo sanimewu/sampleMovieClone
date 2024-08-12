@@ -1,5 +1,5 @@
 <div class="flex flex-wrap justify-center">
-  <div *ngFor="let movie of movieList" class="flex flex-col items-center w-[300px] h-[350px] p-4 m-4 bg-gray-700 rounded-lg shadow-lg">
+  <div *ngFor="let movie of latestMovie" class="flex flex-col items-center w-[300px] h-[350px] p-4 m-4 bg-gray-700 rounded-lg shadow-lg">
     <div class="w-full h-full flex flex-col items-center text-white">
       <div class="font-bold text-base mb-2 text-center">{{ movie.title | capitalize}}</div>
       <img class=" w-2/3 h-2/3 p-2 rounded-lg shadow-lg" src="https://image.tmdb.org/t/p/w185/{{ movie.poster_path }}" alt="{{ movie.title }}">
@@ -8,4 +8,3 @@
     </div>
   </div>
 </div>
-
