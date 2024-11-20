@@ -1,17 +1,20 @@
-<div class="card">
-  <div class="bg-blue-500">
-    Bangladesh1
-  </div>
-  <div class="bg-red-400">
-    <ng-content></ng-content>
-  </div>
-</div>
+<!--<div class="card">-->
+<!--  <div class="bg-blue-500">-->
+<!--    Bangladesh1-->
+<!--  </div>-->
+<!--  <div class="bg-red-400">-->
+<!--    <ng-content></ng-content>-->
+<!--  </div>-->
+<!--</div>-->
 
-<div class="card">
-  <div class="bg-blue-500">
-    Bangladesh2
-    <ng-content></ng-content>
-  </div>
-  <div class="bg-red-400">
-  </div>
-</div>
+<!--<div class="card">-->
+<!--  <div class="bg-blue-500">-->
+<!--    Bangladesh2-->
+<!--    <ng-content></ng-content>-->
+<!--  </div>-->
+<!--  <div class="bg-red-400">-->
+<!--  </div>-->
+<!--</div>-->
+
+<div>{{movie$ | async}}</div>
+<button class="px-4 py-2 bg-red-500 w-full" (click)="unsubscribe()" > Unsubscribe</button>

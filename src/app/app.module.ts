@@ -12,8 +12,10 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import {NzDatePickerComponent, NzRangePickerComponent} from "ng-zorro-antd/date-picker";
 
 registerLocaleData(en);
 
@@ -26,6 +28,7 @@ registerLocaleData(en);
     PercentagePipe,
     UpcomingMovieListComponent,
     DescriptionComponent,
+    DatePickerComponent,
 
 
   ],
@@ -34,12 +37,18 @@ registerLocaleData(en);
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NzRangePickerComponent,
+    NzDatePickerComponent,
+    ReactiveFormsModule,
 
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US },
+    {provide: NZ_I18N, useValue: en_US},
     provideAnimationsAsync(),
     provideHttpClient()
+  ],
+  exports: [
+    DescriptionComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,10 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NzButtonComponent} from "ng-zorro-antd/button";
 import {NzDropDownDirective} from "ng-zorro-antd/dropdown";
+import {MovieListService} from "../service/movie-list.service";
+import {RouterLink} from "@angular/router";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-login-signup',
@@ -10,12 +13,16 @@ import {NzDropDownDirective} from "ng-zorro-antd/dropdown";
   imports: [
     NzButtonComponent,
     NzDropDownDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   styleUrl: './login-signup.component.scss'
 })
-export class LoginSignupComponent implements OnInit {
+export class LoginSignupComponent implements OnInit, OnDestroy {
   private fb= inject(FormBuilder);
+  private destroy$ = new Subject<void>();
+  constructor(private movieListService: MovieListService) {
+  }
 
   registerForm:FormGroup<RegistrationForm> = this.fb.group({
     username:this.fb.group({
@@ -27,7 +34,9 @@ export class LoginSignupComponent implements OnInit {
     })
   });
   ngOnInit(): void {
-
+    // this.movieListService.test().pipe(takeUntil(this.destroy$)).subscribe((res)=>{
+    //   console.log('LoginComponent',res);
+    // });
   }
 
   isButtonDisabled() {
@@ -38,6 +47,17 @@ export class LoginSignupComponent implements OnInit {
       !usernameGroup?.get('name')?.dirty ||
       !loginGroup?.get('mail')?.dirty ||
       !loginGroup?.get('password')?.dirty;
+  }
+
+  onClick() {
+    console.log(this.registerForm.value);
+    this.registerForm.reset();
+  }
+
+
+  ngOnDestroy(): void {
+    // this.destroy$.next();
+    // console.log('Unsubscribe Login');
   }
 }
 export interface RegistrationForm {
